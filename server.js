@@ -1,18 +1,25 @@
-
-// //route to index.html upon loading
-// app.get('/', (req, res) => {
-//     res.sendFile(path.join(__dirname,'index.html'));
-// });
 const express = require('express')
 var path = require('path');
+const ControllerRoute = require('./controller/controller');
 const app = express()
 const port = 3000
 
-// viewed at http://localhost:8080
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
-//
-// app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/controller', ControllerRoute);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// viewed at http://localhost:3000
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/view/index.html'));
+});
+
+//route to the call back form where the token URL is retreived
+app.get('/callBack', function (req, res) {
+    res.sendFile(__dirname + '/view/callBack.html')
+});
+
+//route of the form that the data is displayed
+app.get('/app/data', function (req, res) {
+    res.sendFile(__dirname + '/view/data.html');
+});
+//get the token
+
+app.listen(port, () => console.log(`OAuth app listening on port ${port}!`))

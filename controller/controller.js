@@ -5,6 +5,7 @@
 // let sendData = null;
 // let token = null;
 //
+//
 // //sends the Authorization  code and get the access token url
 // router.post('/accessToken', (req, res) => {
 //     const URL = 'https://www.linkedin.com/oauth/v2/accessToken';
@@ -78,14 +79,19 @@ const isFetch = require('isomorphic-fetch');
 let sendData = null;
 let token = null;
 
+// router.post = function (s, f) {
+//
+// }
+
 //sends the Authorization  code and get the access token url
 router.post('/tokenAccessing', (req, res) => {
+    // console.log(req.body.code);
     const URL = 'https://www.linkedin.com/oauth/v2/accessToken';
     const otherParam = {
         headers: {
             "content-type": "application/x-www-form-urlencoded"
         },
-        body: `grant_type=authorization_code&code=${req.body.code}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2FcallBack&client_id=81pq2n4y27lxjh&client_secret=dWV8mrkSoXrJ1Pwq`,
+        body: 'grant_type=authorization_code&code=${req.body.code}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2FcallBack&client_id=81pq2n4y27lxjh&client_secret=dWV8mrkSoXrJ1Pwq',
         method: "POST",
         mode: "no-cors"
     };

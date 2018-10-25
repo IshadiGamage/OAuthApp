@@ -5,6 +5,8 @@ const app = express()
 const port = 3000
 
 app.use('/controller', ControllerRoute);
+// app.use('/',express.static(__dirname + '/view/index'));
+// app.use('/app',express.static(__dirname + '/view/data'));
 
 // viewed at http://localhost:3000
 app.get('/', function(req, res) {

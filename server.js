@@ -1,12 +1,11 @@
-const express = require('express')
+const express = require('express');
 var path = require('path');
 const ControllerRoute = require('./controller/controller');
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.use('/controller', ControllerRoute);
-// app.use('/',express.static(__dirname + '/view/index'));
-// app.use('/app',express.static(__dirname + '/view/data'));
+
 
 // viewed at http://localhost:3000
 app.get('/', function(req, res) {
@@ -22,6 +21,5 @@ app.get('/callBack', function (req, res) {
 app.get('/app/data', function (req, res) {
     res.sendFile(__dirname + '/view/data.html');
 });
-//get the token
 
-app.listen(port, () => console.log(`OAuth app listening on port ${port}!`))
+app.listen(port, () => console.log(`OAuth app listening on port ${port}!`));
